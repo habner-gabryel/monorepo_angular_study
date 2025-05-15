@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
+import { EnviaFormularioService } from '../../services/envia-formulario.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +9,23 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+    private enviaFormularioService = inject(EnviaFormularioService);
+
     itemFlag = false;
-    mostrarTitulo = false;
+    mostrarTitulo = true;
+    nome = "Habner";
+    lista = [
+      {id: "1", nome: "Boleto"}, {id: "2", nome: "Cartão"}, {id: "3", nome: "Pix"}
+    ];
+
+    @Input() minhaPropDeFora!: string;
+
 
     atualizaItemFlag(valor :boolean){
       this.itemFlag = valor;
     }
 
     submit(){
-      console.log("Clickado");
+      this.enviaFormularioService.enviaInformacaoParaBackend("Dados");
     }
 }
