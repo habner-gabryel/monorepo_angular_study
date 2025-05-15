@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+    itemFlag = false;
+    mostrarTitulo = false;
+
+    atualizaItemFlag(valor :boolean){
+      this.itemFlag = valor;
+    }
+
+    submit(){
+      console.log("Clickado");
+    }
 }
